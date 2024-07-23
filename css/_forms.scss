@@ -1,0 +1,171 @@
+@import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
+
+.form-item,
+.field-type-text-long,
+.field-type-text-with-summary
+{
+  margin-top: 0;
+  margin-bottom: $form-bottom-margin;
+  max-width: 100%;
+  label,
+  .label {
+    color: $text-color; font-weight: 500;
+    margin-bottom: 6px;
+    .field-edit-link a {
+      color: $gray-dark;
+      font-weight: 300;
+    }
+  }
+  .form-text,
+  .form-textarea,
+  .form-select {
+    font-family: inherit;
+    padding: .45em 1em;
+    color: $text-color; font-size: 1em;
+    background-color: #fff; background-image: none; border: $input-border-width solid #ccc; border-radius: $input-border-radius;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    max-width: 100%;
+    &[readonly],
+    &.form-disabled {
+      background-color: $gray-lightest;
+      cursor: default; pointer-events: none;
+    }
+  }
+  &.form-disabled {
+    .form-text,
+    .form-textarea,
+    .form-select {
+      background-color: $gray-lightest;
+      cursor: default; pointer-events: none;
+      opacity: .5;
+    }
+  }
+  .form-button-disabled {
+    opacity: .5;
+    cursor: default; pointer-events: none;
+  }
+
+  .form-text,
+  .form-select {
+    height: $form-item-height;
+  }
+  .description {
+    color: $text-muted; font-size: .8em; white-space: initial;
+    padding-top: 0.2em;
+    strong { font-weight: 400; }
+  }
+  .form-radios {
+    input { margin-top: 0; }
+  }
+
+}
+
+fieldset .fieldset-legend {
+  color: $text-color; font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.field-type-text-with-summary,
+.field-type-text-long {
+  .text-summary-wrapper .form-item {
+    margin-bottom: 1em;
+  }
+  .description { margin-top: 0; }
+  .filter-wrapper {
+    padding: 1em 0;
+  }
+  .text-format-wrapper fieldset {
+    font-size: .8em;
+    margin-bottom: 0;
+  }
+}
+
+.form-actions { margin-top: 1em*2; }
+.form-submit { font-size: 1em; }
+
+//form,
+//.form-content {
+//  .ajax-progress {
+//
+//  }
+//}
+.filter-wrapper {
+  opacity: .3;
+  margin-bottom: 1rem;
+  .form-item label { display: inline-block; }
+}
+.form-managed-file {
+  //display: flex;  // открывается не на всю ширину
+  .image-preview {
+    flex: 0 0 120px;
+    padding-bottom: 0;
+  }
+  .image-widget-data,
+  .file-widget-data { float: initial; }
+  .image-widget-data .form-group { display: none; }
+  .form-item { margin-bottom: 0; } // в табличной части убирает лишний отступ
+
+  display: flex; flex-wrap: wrap;
+  .image-widget-data { flex: 1 1 250px; }
+  .image-action { flex: 100%; }
+  .image-etc { flex: 0 0 100%; }
+}
+.form-items-inline {
+  display: flex;
+  margin-bottom: 1rem;
+  .form-item { margin-bottom: 0; }
+  //.form-submit { margin-left: -1px; } // скрыть правую границу примыкающего текстового поля
+}
+.input-group {
+  display: flex;
+  .form-item {
+    margin-bottom: 0;
+    input { border-top-right-radius: initial; border-bottom-right-radius: initial; }
+  }
+  .form-item:not(:first-child) .form-text,
+  .form-text { flex: auto; }
+  .form-text:not(:first-child) {
+    border-left: none;
+  }
+  .form-item:not(:last-child) .form-text,
+  .form-text:not(:last-child) {
+    border-right: none;
+  }
+  .btn {
+    display: flex; align-items: center;
+    padding: 0 0.5rem;
+    border-top-left-radius: initial; border-bottom-left-radius: initial;
+  }
+}
+
+//.field-type-field-collection {
+//  td {
+//    @include row();
+//    @include top();
+//    > * {
+//      @include col();
+//    }
+//  }
+//}
+
+
+.user-auth-form-wrapper {
+  max-width: 450px;
+  margin: 0 auto 3rem;
+  display: flex; flex-wrap: wrap;
+  .user-links {
+    color: $text-muted; font-size: $font-size-small;
+    margin-bottom: 1rem;
+  }
+  > h1 { margin-top: 0; }
+  > h1,
+  > form {
+    line-height: 1.1;
+    width: 100%
+  }
+
+  @media #{$tablet} {
+    margin: 5vh auto 0;
+  }
+}
+

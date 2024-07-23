@@ -1,0 +1,558 @@
+@import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
+
+@import url($font-url);
+
+html {
+  height: 100%;
+  font-size: 12px;
+  @media #{$smart}    { font-size: 14px; }
+  @media #{$pad}      { font-size: 16px; }
+  @media #{$tablet}   { font-size: 17px; }
+  @media #{$laptop}   { font-size: 18px; }
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0 !important;
+}
+
+a { text-decoration: none; }
+
+body {
+  background-color: $page-bkg;
+  color: $text-color; line-height: 1.22; font-family: $font-name, Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  overflow-y: scroll;
+  position: relative;
+}
+
+h1, .h1 { font-size: $font-size-h1; font-weight: 700; }
+h2, .h2 { font-size: $font-size-h2; font-weight: 700; }
+h3, .h3 { font-size: $font-size-h3; font-weight: 700; }
+h4, .h4 { font-size: $font-size-h4; font-weight: 700; }
+h5, .h5 { font-size: $font-size-h5; font-weight: 700; }
+h6, .h6 { font-size: $font-size-h6; font-weight: 700; }
+
+h1, h2, h3 { margin: 2rem 0 1rem; }
+h4, h5, h6 { margin: 1rem 0; }
+
+@media #{$phone-only}, #{$smart-only} {
+  //h1, .h1 { font-size: $font-size-h1*.6; font-weight: 500; }
+  //h2, .h2 { font-size: $font-size-h2*.8; font-weight: 500; }
+  //h3, .h3 { font-size: $font-size-h3*.8; font-weight: 500; }
+  //h4, .h4, h5, .h5, h6, .h6 { font-weight: 500; }
+}
+
+.screen-width {
+  @include screen-width();
+  overflow: hidden;
+}
+
+.clearfix:after { content: ''; }
+
+// --- Разметка страницы --------------------------------------------------------------
+.container {
+  padding: 0 $page-gutter-xs;
+  width: 100%;
+
+  &.full-height { height: 100%; }
+
+  @media #{$smart}  { padding: 0 $page-gutter-sm; }
+  @media #{$pad}    { padding: 0 $page-gutter-md; }
+  @media #{$tablet} {
+    padding: 0 $page-gutter-lg;
+    max-width: $content-well-max-width;
+    margin: 0 auto;
+  }
+  @media #{$laptop} { padding: 0 $page-gutter-xl; }
+}
+
+.page {
+  display: flex; flex-direction: column;                    // прижать подвал
+  min-height: 100vh;                                        // при открытом меню подвал не прижимается к низу страницы
+  transition: all 200ms ease-in;
+}
+
+div.messages {
+  visibility: hidden;
+  position: fixed; top:0; left: 0; right: 0; z-index: 10;
+  border: none; box-shadow: 0 5px 10px 2px #33333333;
+  margin: 0; padding: 1rem 0;
+  min-height: 60px;
+  transform: translate(0, -100%);
+  transition: all 200ms;
+  &.visible {
+    transform: translate(0, 0);
+    visibility: visible;
+  }
+  &.error,
+  &.warning,
+  &.status { background-image: none; }
+  .close {
+    position: absolute; right: 1rem; top: 0; bottom: 0;
+    display: flex; align-items: center;
+    span {
+      display: block;
+      cursor: pointer;
+      color: $text-muted; font-weight: 500;
+      padding: .1rem .5rem .5rem;
+      transition: all 200ms;
+      &:hover { color: $text-color; }
+    }
+  }
+  .admin-menu & { margin-top: 29px!important; }
+}
+
+.page-header {
+  display: flex; align-items: center;
+  background: $header-bkg;
+  box-shadow: $header-shadow;
+  height: $header-height;
+  .container { display: flex; }
+  .branding {
+    display: flex; justify-content: center;
+    text-align: center; line-height: 1;
+    img {
+      display: block;
+      max-height: 100%;
+    }
+  }
+  .menu { display: flex; justify-content: space-between; }
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+.page-footer {
+  background: $footer-bkg;
+  color: $footer-text;
+  padding: 2rem 0;
+
+  .container { height: 100%; }
+  .rights { font-size: 1.1rem; text-align: right; }
+}
+
+.page-banner  {
+  .container { display: flex; align-items: center; }
+  .screen-width { height: 515px; }
+  .image {
+    height: 100%; width: 100%;
+    position: absolute; z-index: -1;
+    img {
+      object-fit: cover;
+      height: 100%; width: 100%;
+    }
+  }
+  .banner-title-wrapper {
+    color: #fff; font-weight: 700;
+    padding-top: 4rem;
+    max-width: 90%;
+  }
+  .banner-title { font-size: $font-size-h1 * .7; font-weight: 800; line-height: 1.1; }
+  .banner-prefix .share {
+    font-size: 2.5rem;
+    position: absolute; bottom: 50%;
+  }
+  .banner-suffix {
+    font-size: $font-size-h3; font-weight: 600; line-height: 1.4;
+    margin-top: 1rem;
+  }
+
+  @media #{$pad} {
+    .container { align-items: center; }
+    .screen-width { height: 560px; }
+    .banner-title { font-size: $font-size-h1 * .8; }
+    .banner-title-wrapper {
+      padding-top: 0;
+      max-width: 60%;
+    }
+    .banner-prefix .share {
+      font-size: 2rem;
+      position: absolute; bottom: 15%;
+    }
+  }
+  @media #{$laptop} {
+    .banner-title { font-size: $font-size-h1; }
+    .banner-title-wrapper { max-width: 50%; }
+  }
+}
+
+.page-main {
+  //padding-bottom: 2rem;  // внизу может стоять блок со screen-width и background и padding оставит белую полосу
+}
+
+.page-title {
+  margin-bottom: 2rem;
+}
+
+
+// --- Закладки ------------------------------------------------------------------------
+ul.tabs.primary {
+  font-size: .8rem; text-align: right;
+  margin: 2rem 0 1rem;
+  li {
+    a {
+      color: $text-color;
+      padding: 0.5em 1em;
+      line-height: 2em;
+    }
+    &.active a {
+      background: #fff;
+      border-bottom: 1px solid #fff;
+    }
+  }
+}
+ul.tabs.secondary {
+  border: none;
+  text-align: right;
+  padding: 0; margin: 0 0 2rem;
+  > li {
+    border: none;
+    padding: 0; margin-left: .5rem;
+    a {
+      display: inline-block;
+      background: $gray-light;
+      color: $text-color;
+      padding: .2rem 1rem;
+      transition: all 100ms;
+    }
+    & a:hover,
+    &.active a {
+      background: $brand-color;
+      border: none;
+      color: #fff;
+    }
+  }
+}
+
+// --- Breadcrumbs --------------------------------------------------------------------
+.breadcrumb {
+  color: $text-light; font-size: $font-size-small;
+  margin: $gutter*2 0;
+  a {
+    color: $text-light; text-decoration: none;
+    &:hover { color: $brand-color; }
+  }
+}
+
+// --- Блоки --------------------------------------------------------------------------
+.block {
+  margin-bottom: 2rem;
+  display: flow-root; // чтобы margin блока не схлопывался с margin контента (в слайдере с нижней пагинацией, например)
+  p:first-child { margin-top: 0; }
+  //@media #{$laptop} { // почему только для лэптопа?
+    p:last-child { margin-bottom: 0; }
+  //}
+  // .page-main &:last-child { margin-bottom: 0; } // чаще блоки без фона и лучше удалять отступ для остальных индивидуально
+  .view { margin-bottom: 0; }
+}
+
+// --- Views --------------------------------------------------------------------------
+.view {
+  margin-bottom: 2rem;
+  @media #{$tablet} {
+    margin-bottom: 4rem;
+  }
+}
+.views-exposed-form,
+.exposed-filters {
+  margin-bottom: 1rem;
+  .views-exposed-widgets,
+  .filters {
+    display: flex;
+    //@include row();
+    //@include top();
+  }
+  .filters {
+    float: none;
+    width: initial;
+  }
+  .views-exposed-widget,
+  .filters > .form-item {
+    //@include col('xs', 12);
+    margin-bottom: 1rem;
+    label {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    select, input { width: 100%; }
+  }
+
+  .views-exposed-widget {
+    display: flex; flex-wrap: wrap;
+    padding-top: 0;
+    label { flex: 100%; }
+    .views-operator {
+      flex: 0 0 40%;
+      padding-right: 1rem;
+    }
+    .views-widget { flex: 1 0 60%; }
+  }
+  .views-exposed-widget:last-child {
+    padding-right: 0;
+  }
+
+  .views-exposed-widget,
+  .views-exposed-widget.views-widget-filter-type,                     // список материалов
+  .views-exposed-widget.views-widget-filter-status,                   // список материалов
+  .views-reset-button {
+    //@include col();
+  }
+
+  .views-exposed-widget.views-widget-filter-status { max-width: 180px; }
+
+  @media #{$tablet} {
+    .views-exposed-widget,
+    .filters > .form-item {
+      //@include col('md', 4);
+      //@include col();
+      max-width: 33%;
+    }
+    .views-submit-button,
+    .views-reset-button {
+      //@include col();
+    }
+
+    .views-exposed-widget.views-widget-filter-type,
+    .views-exposed-widget.views-widget-filter-mail,
+    .views-exposed-widget.views-widget-filter-field_user_surname_value  {
+      max-width: 270px;                                                // текстовые поля с size > 30 слишком широки
+    }
+  }
+}
+
+// --- Пользователь -------------------------------------------------------------------
+.profile {
+  margin: 0 0 2rem;
+  .profile-left {
+    margin-bottom: 1rem;
+    .image img { width: initial; }
+  }
+  .profile-name {
+    font-size: $font-size-h3; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .profile-role {
+    font-size: $font-size-h4; font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .profile-counts {
+    display: flex; flex-wrap: wrap;
+    margin-bottom: 1rem;
+    .profile-count {
+      border-radius: 4px;
+      background-color: $brand-color;
+      color: #fff; text-align: center;
+      margin: 0 1rem 1rem 0; padding: 1rem;
+      min-width: 100px;
+      &:last-child { margin-right: 0; }
+    }
+    .count-amount { font-size: $font-size-h2; font-weight: 700; }
+  }
+  a { color: inherit; }
+
+  @media #{$tablet} {
+    margin-bottom: 4rem;
+    .profile-name { margin-bottom: 2rem; }
+    .profile-role { margin-bottom: 2rem; }
+    .profile-counts {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+
+// --- Таблицы ------------------------------------------------------------------------
+table {
+  margin-bottom: 1rem;
+  th {
+    font-weight: 500;
+    border-top: 1px solid transparent;  border-left: 1px solid transparent;
+    &:last-child { border-right: 1px solid transparent; }
+  }
+  td {
+    //border-top: 1px solid $text-muted;
+    border-left: 1px solid $text-muted;
+    padding: .5rem;
+    &:last-child { border-right: 1px solid $text-muted; }
+  }
+  //tr:last-child td { border-bottom: 1px solid $text-muted; }
+  tr.odd .form-item,
+  tr.even .form-item {
+    white-space: initial; // в системной теме перенос запрещён
+  }
+
+  a.tabledrag-handle .handle {
+    height: 22px; width: 22px;
+  }
+  form &.field-multiple-table td.field-multiple-drag a.tabledrag-handle {
+    padding: 0;
+  }
+}
+
+fieldset {
+  border-width: 1px;
+  padding: 1rem;
+}
+.field {
+  margin-bottom: 1rem;
+}
+
+// --- Закладки ------------------------------------------------------------------------
+.vertical-tabs {
+  ul.vertical-tabs-list li a {
+    color: inherit;
+    padding: .8rem;
+  }
+  strong { font-weight: 500; }
+  .summary {
+    color: $text-light; font-size: $font-size-base*.8;
+    margin-top: .5rem;
+  }
+  fieldset.vertical-tabs-pane {
+    padding: 1rem;
+    @media #{$tablet} {
+      padding: 1rem 2rem;
+    }
+  }
+}
+
+.horizontal-tabs {
+  ul.horizontal-tabs-list li a {
+    color: inherit;
+    padding: .4rem .8rem;
+  }
+  strong { font-weight: 500; }
+  fieldset.horizontal-tabs-pane {
+    padding: 1rem;
+    @media #{$tablet} {
+      padding: 1rem 2rem;
+    }
+  }
+}
+
+// --- Подкат ------------------------------------------------------------------------
+.readmore {
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  &.blur.closed {
+    cursor: pointer;
+    &:after {
+      display: block;
+      content: ' ';
+      height: 40px;
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, unquote('#fbfbfb73') 30%, white);
+      transition: background-color 500ms;
+    }
+  }
+  &.open {
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    &.blur:after { background: none; }
+  }
+  ~.more {
+    background: $gray-lightest;
+    display: flex; justify-content: center; align-items: center;
+    cursor: pointer;
+    color: $text-light; font-size: $font-size-small; text-align: center; line-height: 1;
+    height: 1.2rem;
+    margin-top: -1.2rem;
+  }
+}
+
+// --- Кнопка Вернуться к началу страницы --------------------------------------------------
+#back-to-top {
+  display: none;
+  position: fixed; bottom: 5rem; right: 6%; z-index: 100;
+  cursor: pointer;
+
+  background: #fff;
+  border-radius: 50px;
+  border: .5rem solid #{$brand-color + '85'};
+  .icon {
+    color: $brand-color; font-size: 3rem;
+  }
+
+  @media #{$pad} {
+    .icon { font-size: 2rem; }
+  }
+}
+
+// --- Иконочный шрифт ---------------------------------------------------------------------
+.icon {
+  display: flex;
+  line-height: 0; // скорректировать высоту иконки
+}
+
+// --- Click-to-copy -----------------------------------------------------------------------
+.c0py:hover~.ctooltip { opacity: 1; visibility: visible; }
+.ctooltip {
+  display: inline-block;
+  position: absolute;
+  transition: all 150ms;
+  visibility: hidden; opacity: 0;
+  padding: 0.4em; margin-top: -.4em;
+  cursor: pointer;
+  svg {
+    display: block;
+    stroke: $text-muted;
+    &.c0pied { stroke: $brand-color; }
+  }
+  .ctooltiptext {
+    display: inline-block;
+    visibility: hidden;
+    min-width: 140px;
+    background-color: black;
+    color: whitesmoke; font-size: .8em; text-align: center; white-space: nowrap;
+    border-radius: 6px;
+    padding: 5px 15px;
+    position: absolute; z-index: 1; bottom: 150%; left: 0;
+    transform: translateX(-50%);
+    margin-left: 1.3em;
+    &::after {
+      content: "";
+      position: absolute; top: 100%; left: 50%;
+      margin-left: -5px;
+      border-width: 5px; border-style: solid; border-color: black transparent transparent transparent;
+    }
+  }
+  &:hover {
+    opacity: 1; visibility: visible;
+   .ctooltiptext { visibility: visible; opacity: 1; }
+  }
+}
+
+.ajax-progress {
+  position: fixed; top: 0; bottom: 0; left:0; right: 0; z-index: 99;
+  background: #ffffffcc; background-size: cover;
+  border-radius: 40px;
+  display: flex; justify-content: center; align-items: center;
+  color: #fff;
+  transition: all 200ms;
+  .throbber {
+    background-image: url(../../cbtheme/images/plant.gif);
+    height: 60px; width: 60px;
+  }
+  .message { color: $text-color; }
+}
+
+// --- Печатный вариант страниц ------------------------------------------------------------
+@media print {
+  *,
+  *:before,
+  *:after,
+  *:first-letter,
+  p:first-line,
+  div:first-line,
+  blockquote:first-line,
+  li:first-line {
+    background: transparent !important;
+    color: #000 !important; text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  header, .page-footer, .nav-mobile, .breadcrumb, .tabs  { display: none!important; }
+}

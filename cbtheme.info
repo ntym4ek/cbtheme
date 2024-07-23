@@ -1,0 +1,31 @@
+name = Custom Base Theme
+description = Базовая тема
+package = Custom
+version = 1.55
+core = 7.x
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+
+regions[page_top] = Page Top
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[sidebar_first]  = Left sidebar
+regions[content] = Content
+regions[sidebar_second] = Right sidebar
+regions[downlighted] = Downlighted
+regions[footer] = Footer
+regions[page_bottom] = Page Bottom
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Styles
+;;;;;;;;;;;;;;;;;;;;;
+stylesheets[all][] = css/styles.css
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Scripts
+;;;;;;;;;;;;;;;;;;;;;
+scripts[] = js/swipe.js
+scripts[] = js/cbtheme.js
+scripts[] = js/click-to-copy.js

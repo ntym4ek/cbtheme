@@ -1,0 +1,46 @@
+
+// растянуть блок на всю ширину экрана за рамки родителя
+@mixin screen-width() {
+  position: relative;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+// раскраска кнопок
+@mixin btn() {
+  display: inline-flex; justify-content: center; align-items: center;
+  background: transparent;
+  color: $text-color; text-decoration: none; text-align: center;
+  transition: all 200ms;
+  cursor: pointer;
+  margin-bottom: 0; // For input.btn
+
+  border: $input-border-width solid transparent;
+  border-radius: $button-border-radius;
+  min-height: $form-item-height;
+  padding: .45em 1em;
+  //&:not(.btn-static):hover, &:not(.btn-static):focus {
+  //  background: darken(#fff, 15%);
+  //}
+}
+
+@mixin btn-color($bkg, $color: #fff) {
+  background: $bkg;
+  border-color: $bkg;
+  color: $color;
+  &:not(.btn-static):hover, &:not(.btn-static):focus {
+    background: darken($bkg, 8%);
+    border-color: darken($bkg, 8%);
+  }
+}
+
+// раскраска кнопок
+@mixin btn-color-outline($bkg, $color: #fff) {
+  background: transparent;
+  border-color: $bkg;
+  color: $bkg;
+  &:not(.btn-static):hover, &:not(.btn-static):focus {
+    background-color: lighten($bkg, 60%);
+    border-color:     $bkg;
+  }
+}

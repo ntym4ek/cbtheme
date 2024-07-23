@@ -1,0 +1,22 @@
+// файл, собирающий все стили в одном месте, чтобы подключить их в подтеме
+// пример подключения стилей в подтеме:
+  // переменные Базовой темы
+  // @import "../../cbtheme/css/variables";
+  // переменные Своей темы
+  // @import "variables";
+  // стили с учётом изменённых переменных
+  // @import "../../cbtheme/css/styles";
+  // далее идут Свои стили
+// конец примера
+
+@import "../flexbox/main.scss";       // flex-grid на базе изменённого http://sassflexboxgrid.com
+
+// общие стили Базовой темы
+@import "mixins";
+@import "helper";
+@import "common";
+@import "buttons";
+@import "forms";
+@import "menus";
+
+

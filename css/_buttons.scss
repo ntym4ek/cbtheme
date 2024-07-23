@@ -1,0 +1,108 @@
+@import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
+
+
+.btn {
+  &:not(:last-child) { margin-right: 1rem; }  // отбивка для рядом стоящих кнопок
+
+  &:not(.btn-link) {
+    @include btn();
+  }
+  //&:not(:last-child) { margin-right: 1rem; } // если кнопка AJAX, то к ней добавляется throbber и она перестаёт быть последней
+  //& { margin-right: 1rem; }
+
+  &.btn-static {} // для кнопок, не меняющих состояние при наведении
+
+  &.btn-default   { @include btn-color($gray-light); }
+  &.btn-brand     { @include btn-color($brand-color); }
+  &.btn-danger    { @include btn-color($brand-red); }
+  &.btn-warning   { @include btn-color($brand-orange); }
+
+  &.btn-outline.btn-default   { @include btn-color-outline($gray-lightest); }
+  &.btn-outline.btn-brand     { @include btn-color-outline($brand-color); }
+  &.btn-outline.btn-danger    { @include btn-color-outline($brand-red); }
+  &.btn-outline.btn-warning   { @include btn-color-outline($brand-orange); }
+
+  &.btn-large {
+    font-size: $font-size-h4; font-weight: 500;
+  }
+  &.btn-huge {
+    font-size: $font-size-h3; font-weight: 700;
+  }
+  &.btn-small { font-size: $font-size-small; }
+  &.btn-badge { font-size: .6rem; }
+
+  // кнопка-иконка, без рамок и фона
+  &.btn-icon {
+    border: none;
+    background: none;
+  }
+  // кнопка с текстом и иконкой
+  &.btn-with-icon {
+    border-radius: 20px;
+    min-height: initial;
+    padding: 0;
+    width: 22px; height: 22px;
+  }
+  &.btn-wide { padding-left: 1em*3; padding-right: 1em*3; }
+  &.btn-full-wide { width: 100%; }
+  &.btn-full-height {
+    display: inline-flex; justify-content: center; align-items: center;
+    height: 100%;
+  }
+
+  &.btn-underline {
+    flex-direction: column;
+    &:after {
+      content: ' ';
+      background-color: #fff;
+      display: block;
+      width: 4rem; height: 1px;
+      margin: 8px auto 0;
+      transition: width 200ms;
+    }
+    &:hover:after {
+      width: 5rem;
+    }
+  }
+
+  &.btn-uppercase {
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &.btn-with-icon-right .icon { margin-left: .8em; }
+  &.btn-with-icon-left .icon { margin-right: .8em; }
+
+  &.btn-file {
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    min-width: 2rem;
+    input[type=file] {
+      background: white;
+      display: block;
+      position: absolute; top: 0; right: 0;
+      min-width: 100%; min-height: 100%;
+      font-size: 100px; text-align: right;
+      filter: alpha(opacity = 0);
+      opacity: 0;
+      outline: none;
+      cursor: inherit;
+    }
+  }
+
+  &.btn-disabled,
+  &[disabled] {
+    opacity: .5;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+
+.badge {
+  position: absolute; top: -10px; right: -10px;
+  background: $brand-color; border-radius: 999px;
+  color: #fff; font-weight: 700;
+  padding: .25em .6em;
+}
