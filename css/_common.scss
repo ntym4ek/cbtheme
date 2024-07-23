@@ -472,12 +472,13 @@ fieldset {
   background: #fff;
   border-radius: 50px;
   border: .5rem solid #{$brand-color + '85'};
+  font-size: 2rem;
   .icon {
-    color: $brand-color; font-size: 3rem;
+    color: $brand-color;
   }
 
-  @media #{$pad} {
-    .icon { font-size: 2rem; }
+  @media #{$tablet} {
+    font-size: 1.4rem;
   }
 }
 
