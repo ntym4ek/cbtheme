@@ -76,8 +76,8 @@ function cbtheme_preprocess_page(&$vars)
   }
 
   // вывод многоуровневого меню
-  if (!empty($vars['main_menu'])) {
-    $main_menu = module_exists('i18n_menu') ? i18n_menu_translated_tree('main-menu') : menu_tree('main-menu');
+  if ($menu_name = variable_get('menu_main_links_source', '')) {
+    $main_menu = module_exists('i18n_menu') ? i18n_menu_translated_tree($menu_name) : menu_tree($menu_name);
     $main_menu['#attributes']['class'] = ['main-menu'];
     $vars['primary_nav'] = render($main_menu);
   }
@@ -85,10 +85,10 @@ function cbtheme_preprocess_page(&$vars)
     $vars['primary_nav'] = FALSE;
   }
 
-  if (!empty($vars['secondary_menu'])) {
-    $main_menu =  module_exists('i18n_menu') ? i18n_menu_translated_tree('user-menu') : menu_tree('user-menu');
-    $main_menu['#attributes']['class'] = ['secondary-menu'];
-    $vars['secondary_nav'] = render($main_menu);
+  if ($menu_name = variable_get('menu_secondary_links_source', '')) {
+    $sec_menu =  module_exists('i18n_menu') ? i18n_menu_translated_tree($menu_name) : menu_tree($menu_name);
+    $sec_menu['#attributes']['class'] = ['secondary-menu'];
+    $vars['secondary_nav'] = render($sec_menu);
   }
   else {
     $vars['secondary_nav'] = FALSE;
