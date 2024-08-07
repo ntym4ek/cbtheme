@@ -46,7 +46,7 @@
   }
 
   .form-text,
-  .form-select {
+  .form-select:not([multiple="multiple"]) {
     height: $form-item-height;
   }
   .description {
