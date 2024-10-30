@@ -1,0 +1,9 @@
+name = Project Theme
+description = Тема на базе Custom Base Theme
+core = 7.x
+base theme = cbtheme
+
+stylesheets[all][] = css/styles.css
+stylesheets[all][] = fonts/iconfont/styles.css
+
+
