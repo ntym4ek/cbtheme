@@ -44,7 +44,8 @@
     width: 22px; height: 22px;
   }
   &.btn-wide { padding-left: 1em*3; padding-right: 1em*3; }
-  &.btn-full-wide { width: 100%; }
+  &.btn-full-wide,  // уст.
+  &.btn-full-width { width: 100%; }
   &.btn-full-height {
     display: inline-flex; justify-content: center; align-items: center;
     height: 100%;

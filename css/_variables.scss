@@ -35,7 +35,7 @@ $text-muted:        $gray!default;
 $font-url:              'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap'!default;
 $font-name:             'Montserrat'!default;
 
-$font-size-h1:            2.5rem!default;            // 42
+$font-size-h1:            2.33rem!default;           // 42
 $font-size-h2:            1.667rem!default;          // 30
 $font-size-h3:            1.333rem!default;          // 24
 $font-size-h4:            1.222rem!default;          // 22
@@ -93,4 +93,5 @@ $input-border-width:      1px!default;
 $input-border-radius:     1px!default;
 
 // кнопки
-$button-border-radius:    1px!default;
+$btn-border-radius:       1px!default;
+$btn-padding:             .45em 1em!default;

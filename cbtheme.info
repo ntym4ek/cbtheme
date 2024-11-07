@@ -1,7 +1,7 @@
 name = Custom Base Theme
 description = Базовая тема
 package = Custom
-version = 1.58
+version = 1.59
 core = 7.x
 
 ;;;;;;;;;;;;;;;;;;;;;

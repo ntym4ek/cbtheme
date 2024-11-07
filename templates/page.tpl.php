@@ -2,7 +2,7 @@
 
   <div class="nav-mobile">
     <div class="logo">
-      <img src="<?php print $logo; ?>" />
+      <img src="<?php print $logo; ?>"  alt="<?php print $site_name; ?>"/>
       <span><?php print $site_name; ?></span>
     </div>
     <div class="menu-mobile-wr">
@@ -19,7 +19,7 @@
           <div class="col-xs-12 col-md-2">
             <div class="branding">
               <a href="<?php print $front_page ?>">
-                <img src="<?php print $logo ?>" />
+                <img src="<?php print $logo; ?>"  alt="<?php print $site_name; ?>"/>
               </a>
             </div>
           </div>

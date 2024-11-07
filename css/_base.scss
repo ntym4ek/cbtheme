@@ -475,6 +475,7 @@ fieldset {
   font-size: 2rem;
   .icon {
     color: $brand-color;
+    margin: -1px;     // чтобы не вылазили щели
   }
 
   @media #{$tablet} {
