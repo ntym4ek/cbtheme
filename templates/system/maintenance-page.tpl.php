@@ -42,6 +42,7 @@
       .logo {
         flex: auto; order: -1;
         text-align: center;
+        align-content: center;
       }
       @media(min-width: 764px) {
         .maintenance {
