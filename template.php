@@ -125,7 +125,7 @@ function cbtheme_preprocess_region(array &$vars)
 /**
  * Returns HTML for a region.
  */
-function cbtheme_region__no_wrapper(&$vars)
+function cbtheme_region__no_wrapper($vars)
 {
   return $vars['elements']['#children'];
 }
@@ -213,9 +213,6 @@ function cbtheme_preprocess_button(&$vars)
   if (!in_array('btn', $vars["element"]['#attributes']['class'])) {
     $vars["element"]['#attributes']['class'][] = 'btn';
     if (isset($vars["element"]["#id"])) {
-//      if (strpos($vars["element"]["#id"], 'file') !== FALSE || strpos($vars["element"]["#id"], 'image') !== FALSE || strpos($vars["element"]["#id"], 'upload') !== FALSE) {
-//        $vars["element"]['#attributes']['class'][] = 'btn-small';
-//      }
       if (strpos($vars["element"]["#id"], 'delete') !== FALSE || strpos($vars["element"]["#id"], 'remove') !== FALSE) {
         $vars["element"]['#attributes']['class'][] = 'btn-danger';
         $vars["element"]['#attributes']['class'][] = 'btn-small';
