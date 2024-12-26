@@ -11,9 +11,12 @@ html {
   @media #{$laptop}   { font-size: 18px; }
 }
 
-* {
+*,
+html * {
   box-sizing: border-box;
   outline: 0 !important;
+  scrollbar-width: thin;
+  scrollbar-color: $brand-color #f1f1f1;
 }
 
 a { text-decoration: none; }
