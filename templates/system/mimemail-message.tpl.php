@@ -20,43 +20,45 @@
 ?>
 
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body id="mimemail-body" <?php if ($module && $key): print 'class="'. $module .'-'. $key .'"'; endif; ?>>
-<table style="font-family: ubuntu,Helvetica,Arial,sans-serif; font-size: 16px; width: 100%;">
-  <tr>
-    <td align="center">
-      <table style="width: 800px; max-width: 800px;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body id="mimemail-body" <?php if ($module && $key): print 'class="'. $module .'-'. $key .'"'; endif; ?>>
+  <div style="margin:0px auto;max-width:800px;">
+    <table style="font-family: ubuntu,Helvetica,Arial,sans-serif; font-size: 16px; width: 100%;">
+      <tr>
+        <td align="center">
+          <table style="width: 100%;">
 
-        <tr>
-          <td style="padding: 10px 10px 10px 20px; height: 70px; ">
-            <img src="<?php print $logo_mail; ?>" style="display: block; max-width: 100%; max-height: 100%;">
-          </td>
-          <td style="padding: 10px 0; height: 70px; vertical-align: middle; font-weight: 700; ">
-            <?php print $site_name; ?>
-          </td>
-        </tr>
+            <tr>
+              <td style="padding: 10px 10px 10px 20px; height: 70px; ">
+                <img src="<?php print $logo_mail; ?>" style="display: block; max-width: 100%; max-height: 100%;">
+              </td>
+              <td style="padding: 10px 0; height: 70px; vertical-align: middle; font-weight: 700; ">
+                <?php print $site_name; ?>
+              </td>
+            </tr>
 
-        <tr>
-          <td colspan="2" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 20px; height:300px; vertical-align: top;">
-            <?php print $body; ?>
-          </td>
-        </tr>
+            <tr>
+              <td colspan="2" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 20px; height:300px; vertical-align: top;">
+                <?php print $body; ?>
+              </td>
+            </tr>
 
-        <tr>
-          <td colspan="2" style="font-size: .8em; padding: 10px 20px;">
-            <?php print $sign; ?><br />
-            <?php if ($notice): ?>
-              <span style="color: #bbb;"><?php print $notice; ?></span>
-            <?php endif; ?>
-          </td>
-        </tr>
+            <tr>
+              <td colspan="2" style="font-size: .8em; padding: 10px 20px;">
+                <?php print $sign; ?><br />
+                <?php if ($notice): ?>
+                  <span style="color: #bbb;"><?php print $notice; ?></span>
+                <?php endif; ?>
+              </td>
+            </tr>
 
-      </table>
-    </td>
-  </tr>
-</table>
-</body>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </body>
 </html>
 
