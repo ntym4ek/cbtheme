@@ -29,3 +29,4 @@ stylesheets[all][] = css/styles.css
 scripts[] = js/swipe.js
 scripts[] = js/cbtheme.js
 scripts[] = js/click-to-copy.js
+scripts[] = js/ajax.js

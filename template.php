@@ -224,7 +224,7 @@ function cbtheme_preprocess_button(&$vars)
       elseif (strpos($vars["element"]["#id"], 'submit') !== FALSE) {
         $vars["element"]['#attributes']['class'][] = 'btn-brand';
       }
-      else {
+      elseif(!in_array('btn-link', $vars["element"]['#attributes']['class'])) {
         $vars["element"]['#attributes']['class'][] = 'btn-default';
       }
     }

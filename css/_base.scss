@@ -29,6 +29,15 @@ body {
   position: relative;
 }
 
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 h1, .h1 { font-size: $font-size-h1; font-weight: 700; }
 h2, .h2 { font-size: $font-size-h2; font-weight: 700; }
 h3, .h3 { font-size: $font-size-h3; font-weight: 700; }
@@ -228,6 +237,37 @@ ul.tabs.secondary {
     }
   }
 }
+.vertical-tabs {
+  ul.vertical-tabs-list li a {
+    color: inherit;
+    padding: .8rem;
+  }
+  strong { font-weight: 500; }
+  .summary {
+    color: $text-light; font-size: $font-size-base*.8;
+    margin-top: .5rem;
+  }
+  fieldset.vertical-tabs-pane {
+    padding: 1rem;
+    @media #{$tablet} {
+      padding: 1rem 2rem;
+    }
+  }
+}
+
+.horizontal-tabs {
+  ul.horizontal-tabs-list li a {
+    color: inherit;
+    padding: .4rem .8rem;
+  }
+  strong { font-weight: 500; }
+  fieldset.horizontal-tabs-pane {
+    padding: 1rem;
+    @media #{$tablet} {
+      padding: 1rem 2rem;
+    }
+  }
+}
 
 // --- Breadcrumbs --------------------------------------------------------------------
 .breadcrumb {
@@ -402,39 +442,6 @@ fieldset {
   margin-bottom: 1rem;
 }
 
-// --- Закладки ------------------------------------------------------------------------
-.vertical-tabs {
-  ul.vertical-tabs-list li a {
-    color: inherit;
-    padding: .8rem;
-  }
-  strong { font-weight: 500; }
-  .summary {
-    color: $text-light; font-size: $font-size-base*.8;
-    margin-top: .5rem;
-  }
-  fieldset.vertical-tabs-pane {
-    padding: 1rem;
-    @media #{$tablet} {
-      padding: 1rem 2rem;
-    }
-  }
-}
-
-.horizontal-tabs {
-  ul.horizontal-tabs-list li a {
-    color: inherit;
-    padding: .4rem .8rem;
-  }
-  strong { font-weight: 500; }
-  fieldset.horizontal-tabs-pane {
-    padding: 1rem;
-    @media #{$tablet} {
-      padding: 1rem 2rem;
-    }
-  }
-}
-
 // --- Подкат ------------------------------------------------------------------------
 .readmore {
   margin-bottom: 1.2rem;
@@ -530,18 +537,9 @@ fieldset {
   }
 }
 
-.ajax-progress {
-  position: fixed; top: 0; bottom: 0; left:0; right: 0; z-index: 99;
-  background: #ffffffcc; background-size: cover;
-  border-radius: 40px;
-  display: flex; justify-content: center; align-items: center;
-  color: #fff;
-  transition: all 200ms;
-  .throbber {
-    background-image: url(../../cbtheme/images/plant.gif);
-    height: 60px; width: 60px;
-  }
-  .message { color: $text-color; }
+.ajax-progress-throbber {
+  vertical-align: middle;
+  .message { display: none; }
 }
 
 // --- Печатный вариант страниц ------------------------------------------------------------

@@ -1,5 +1,13 @@
 @import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
 
+label,
+.label,
+.field .field-label {
+  color: $label-color; font-weight: $label-weight;
+  margin-bottom: 6px;
+}
+
+
 .form-item,
 .field-type-text-long,
 .field-type-text-with-summary
@@ -9,8 +17,6 @@
   max-width: 100%;
   label,
   .label {
-    color: $text-color; font-weight: 500;
-    margin-bottom: 6px;
     .field-edit-link a {
       color: $gray-dark;
       font-weight: 300;
@@ -20,15 +26,15 @@
   .form-textarea,
   .form-select {
     font-family: inherit;
-    padding: .45em 1em;
-    color: $text-color; font-size: 1em;
-    background-color: #fff; background-image: none; border: $input-border-width solid #ccc; border-radius: $input-border-radius;
+    padding: $padding-base-vertical $padding-base-horizontal;
+    color: $input-color; font-size: 1em;
+    background-color: $input-bg-color; background-image: none; border: $input-border-width solid $input-border-color; border-radius: $input-border-radius;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    max-width: 100%;
+    max-width: 100%; width: 100%;
     &[readonly],
     &.form-disabled {
       background-color: $gray-lightest;
-      cursor: default; pointer-events: none;
+      cursor: not-allowed; pointer-events: none;
     }
   }
   &.form-disabled {
@@ -36,13 +42,13 @@
     .form-textarea,
     .form-select {
       background-color: $gray-lightest;
-      cursor: default; pointer-events: none;
-      opacity: .5;
+      cursor: not-allowed; pointer-events: none;
+      opacity: $input-disabled-opacity;
     }
   }
   .form-button-disabled {
-    opacity: .5;
-    cursor: default; pointer-events: none;
+    opacity: $input-disabled-opacity;
+    cursor: not-allowed; pointer-events: none;
   }
 
   .form-text,
@@ -58,6 +64,10 @@
     input { margin-top: 0; }
   }
 
+}
+
+.form-type-checkbox {
+  label { color: $input-color; }
 }
 
 fieldset .fieldset-legend {
@@ -83,12 +93,6 @@ fieldset .fieldset-legend {
 .form-actions { margin-top: 1em*2; }
 .form-submit { font-size: 1em; }
 
-//form,
-//.form-content {
-//  .ajax-progress {
-//
-//  }
-//}
 .filter-wrapper {
   opacity: .3;
   margin-bottom: 1rem;
@@ -133,20 +137,18 @@ fieldset .fieldset-legend {
   }
   .btn {
     display: flex; align-items: center;
-    padding: 0 0.5rem;
+    padding: 0 .5rem;
     border-top-left-radius: initial; border-bottom-left-radius: initial;
   }
 }
-
-//.field-type-field-collection {
-//  td {
-//    @include row();
-//    @include top();
-//    > * {
-//      @include col();
-//    }
-//  }
-//}
+.input-group-addon {
+  padding: $padding-base-vertical $padding-base-horizontal;
+  color: $input-color; font-size: $font-size-base; font-weight: 400; text-align: center;
+  //line-height: 1;
+  background-color: $input-bg-color;
+  border: 1px solid $input-border-color; border-left: none;
+  border-radius: $input-border-radius;
+}
 
 
 .user-auth-form-wrapper {
