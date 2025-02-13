@@ -141,15 +141,6 @@ fieldset .fieldset-legend {
     border-top-left-radius: initial; border-bottom-left-radius: initial;
   }
 }
-.input-group-addon {
-  padding: $padding-base-vertical $padding-base-horizontal;
-  color: $input-color; font-size: $font-size-base; font-weight: 400; text-align: center;
-  //line-height: 1;
-  background-color: $input-bg-color;
-  border: 1px solid $input-border-color; border-left: none;
-  border-radius: $input-border-radius;
-}
-
 
 .user-auth-form-wrapper {
   max-width: 450px;

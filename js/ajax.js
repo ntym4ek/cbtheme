@@ -60,24 +60,21 @@ Drupal.ajax.prototype.beforeSend = function (xmlhttprequest, options) {
     }
   }
   else if (this.progress.type == 'throbber') {
-    this.progress.element = $('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+    this.progress.element = $('<div class="ajax-progress ajax-progress-throbber"><div class="throbber-wrapper"><div class="throbber">&nbsp;</div></div></div>');
     if (this.progress.message) {
       $('.throbber', this.progress.element).after('<div class="message">' + this.progress.message + '</div>');
     }
 
     // If element is an input type, append after.
-    // if ($element.is('input')) {
-    if ($element.is('input')) {
-      $element.after(this.progress.element);
-    }
-    else if ($element.is('select')) {
-      var $inputGroup = $element.closest('.form-item').find('.input-group-addon, .input-group-btn');
+    if ($element.is('input') || $element.is('select')) {
+      var $inputGroup = $element.closest('.form-item').find('.ajax-progress-throbber');
       if (!$inputGroup.length) {
-        $element.wrap('<div class="input-group">');
-        $inputGroup = $('<span class="input-group-addon">');
-        $element.after($inputGroup);
+        $element.wrap('<div class="ajax-wrapper">');
+        // $inputGroup = $('<div class="ajax-throbber-wrapper">');
+        // $element.after($inputGroup);
       }
-      $inputGroup.append(this.progress.element);
+      $element.after(this.progress.element);
+      // $inputGroup.append(this.progress.element);
     }
     // Otherwise append the throbber inside the element.
     else {
@@ -92,9 +89,9 @@ Drupal.ajax.prototype.beforeSend = function (xmlhttprequest, options) {
 var success = Drupal.ajax.prototype.success;
 Drupal.ajax.prototype.success = function (response, status) {
   // If element is a select type, then unwrap.
-  if ($(this.element).is('select')) {
-    $(this.element).siblings('span.input-group-addon').remove();
-    $(this.element).unwrap('div.input-group');
+  if ($(this.element).is('select') || $(this.element).is('input')) {
+    // $(this.element).siblings('div.ajax-throbber-wrapper').remove();
+    $(this.element).unwrap('div.ajax-wrapper');
   }
 
   // Invoke the original success handler.
@@ -107,9 +104,9 @@ Drupal.ajax.prototype.success = function (response, status) {
 var error = Drupal.ajax.prototype.error;
 Drupal.ajax.prototype.error = function (xmlhttprequest, uri, customMessage) {
   // If element is a select type, then unwrap.
-  if ($(this.element).is('select')) {
-    $(this.element).siblings('span.input-group-addon').remove();
-    $(this.element).unwrap('div.input-group');
+  if ($(this.element).is('select') || $(this.element).is('input')) {
+    // $(this.element).siblings('div.ajax-throbber-wrapper').remove();
+    $(this.element).unwrap('div.ajax-wrapper');
   }
 
   // Invoke the original error handler.

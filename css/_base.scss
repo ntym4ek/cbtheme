@@ -537,8 +537,17 @@ fieldset {
   }
 }
 
+// --- Настройки throbber совместно с переопределением Drupal.ajax.prototype.beforeSend в ajax.js ----------------------
+.ajax-wrapper {
+  position: relative;
+  display: inline-block;
+}
 .ajax-progress-throbber {
-  vertical-align: middle;
+  position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+  .throbber-wrapper {
+    display: flex; justify-content: center; align-items: center;
+    width: 100%; height: 100%;
+  }
   .message { display: none; }
 }
 
