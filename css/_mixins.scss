@@ -6,24 +6,20 @@
   margin-right: calc(-50vw + 50%);
 }
 
-@mixin btn() {   // устаревшее
-  display: inline-flex; justify-content: center; align-items: center;
-  background: transparent;
-  color: $text-color; text-decoration: none; text-align: center;
-  transition: all 200ms;
+@mixin btn() {
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  display: inline-block;
+  font-weight: $btn-font-weight; text-align: center; white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
   cursor: pointer;
   margin-bottom: 0; // For input.btn
-
-  border: $input-border-width solid transparent;
-  border-radius: $btn-border-radius;
-  min-height: $form-item-height;
-  padding: $padding-base-vertical $padding-base-vertical;
-  //&:not(.btn-static):hover, &:not(.btn-static):focus {
-  //  background: darken(#fff, 15%);
-  //}
+  user-select:none;
+  position: relative; // для вставляемого внутрь ajax throbber
 }
 
-@mixin btn-color($bkg, $color: #fff) {
+@mixin btn-color($bkg, $color: #fff) { // устаревшее
   background: $bkg;
   border-color: $bkg;
   color: $color;
@@ -83,11 +79,12 @@
 }
 
 // Button sizes
-@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius, $height) {
   padding: $padding-vertical $padding-horizontal;
   font-size: $font-size;
   line-height: $line-height;
   border-radius: $border-radius;
+  height: $height;
 }
 
 // раскраска кнопок
@@ -101,10 +98,3 @@
   }
 }
 
-@mixin tab-focus() {
-  // WebKit-specific. Other browsers will keep their default outline style.
-  // (Initially tried to also force default via `outline: initial`,
-  // but that seems to erroneously remove the outline in Firefox altogether.)
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}

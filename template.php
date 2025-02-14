@@ -215,14 +215,14 @@ function cbtheme_preprocess_button(&$vars)
     if (isset($vars["element"]["#id"])) {
       if (strpos($vars["element"]["#id"], 'delete') !== FALSE || strpos($vars["element"]["#id"], 'remove') !== FALSE) {
         $vars["element"]['#attributes']['class'][] = 'btn-danger';
-        $vars["element"]['#attributes']['class'][] = 'btn-small';
+//        $vars["element"]['#attributes']['class'][] = 'btn-sm';
         if (strpos($vars["element"]["#id"], 'file') !== FALSE) {
           $vars["element"]["#value"] = 'x';
           $vars["element"]['#attributes']['class'][] = 'btn-with-icon';
         }
       }
       elseif (strpos($vars["element"]["#id"], 'submit') !== FALSE) {
-        $vars["element"]['#attributes']['class'][] = 'btn-brand';
+        $vars["element"]['#attributes']['class'][] = 'btn-primary';
       }
       elseif(!in_array('btn-link', $vars["element"]['#attributes']['class'])) {
         $vars["element"]['#attributes']['class'][] = 'btn-default';

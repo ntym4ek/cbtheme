@@ -12,18 +12,10 @@
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $input-font-size-base, $line-height-base, $btn-border-radius-base, $input-height-base);
   user-select:none;
   position: relative; // для вставляемого внутрь ajax throbber
-
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      @include tab-focus;
-    }
-  }
+  transition: all 200ms;
 
   &:hover,
   &:focus,
@@ -51,19 +43,7 @@
 
   &:not(:last-child) { margin-right: 1rem; }  // отбивка для рядом стоящих кнопок
 
-  //&:not(.btn-link) {
-  //  @include btn();
-  //}
-  //&:not(:last-child) { margin-right: 1rem; } // если кнопка AJAX, то к ней добавляется throbber и она перестаёт быть последней
-  //& { margin-right: 1rem; }
-
   &.btn-static {} // для кнопок, не меняющих состояние при наведении
-
-  //&.btn-default   { @include btn-color($gray-light); }
-  //&.btn-brand     { @include btn-color($brand-color); }
-  //&.btn-danger    { @include btn-color($brand-red); }
-  //&.btn-warning   { @include btn-color($brand-orange); }
-
 
   &.btn-outline.btn-default   { @include btn-color-outline($gray-lightest); }
   &.btn-outline.btn-brand     { @include btn-color-outline($brand-color); }
@@ -71,12 +51,9 @@
   &.btn-outline.btn-warning   { @include btn-color-outline($brand-orange); }
 
   &.btn-large {
-    font-size: $font-size-h4; font-weight: 500;
+    font-size: $input-font-size-large; font-weight: 500;
   }
-  &.btn-huge {
-    font-size: $font-size-h3; font-weight: 600;
-  }
-  &.btn-small { font-size: $font-size-small; }
+  &.btn-small { font-size: $input-font-size-small; }
   &.btn-badge { font-size: .6rem; }
 
   // кнопка-иконка, без рамок и фона
@@ -144,6 +121,7 @@
 .btn-default {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
+.btn-brand,
 .btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
@@ -206,14 +184,14 @@
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $btn-border-radius-large);
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $input-font-size-large, $line-height-large, $btn-border-radius-large, $input-height-large);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
+  @include button-size($padding-small-vertical, $padding-small-horizontal, $input-font-size-small, $line-height-small, $btn-border-radius-small, $input-height-small);
 }
 .btn-xs {
-  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
+  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $input-font-size-small, $line-height-small, $btn-border-radius-small, $input-height-small*.89);
 }
 
 .badge {
