@@ -5,4 +5,15 @@ base theme = cbtheme
 
 stylesheets[all][] = css/styles.css
 
-
+;;;;;;;;;;;;;;;;;;;;;
+;; Regions
+;;;;;;;;;;;;;;;;;;;;;
+regions[page_top] = Page Top
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[sidebar_first]  = Left sidebar
+regions[content] = Content
+regions[sidebar_second] = Right sidebar
+regions[downlighted] = Downlighted
+regions[footer] = Footer
+regions[page_bottom] = Page Bottom

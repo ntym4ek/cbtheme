@@ -60,6 +60,8 @@ h4, h5, h6 { margin: 1rem 0; }
   overflow: hidden;
 }
 
+img { display: block; }
+
 .clearfix:after { content: ''; }
 
 // --- Разметка страницы --------------------------------------------------------------
@@ -294,6 +296,7 @@ ul.tabs.secondary {
 // --- Views --------------------------------------------------------------------------
 .view {
   margin-bottom: 2rem;
+
   @media #{$tablet} {
     margin-bottom: 4rem;
   }
@@ -304,8 +307,6 @@ ul.tabs.secondary {
   .views-exposed-widgets,
   .filters {
     display: flex;
-    //@include row();
-    //@include top();
   }
   .filters {
     float: none;
@@ -313,7 +314,6 @@ ul.tabs.secondary {
   }
   .views-exposed-widget,
   .filters > .form-item {
-    //@include col('xs', 12);
     margin-bottom: 1rem;
     label {
       font-weight: 500;
@@ -349,8 +349,6 @@ ul.tabs.secondary {
   @media #{$tablet} {
     .views-exposed-widget,
     .filters > .form-item {
-      //@include col('md', 4);
-      //@include col();
       max-width: 33%;
     }
     .views-submit-button,
