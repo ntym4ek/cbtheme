@@ -37,6 +37,7 @@ label,
       background-color: $gray-lightest;
       cursor: not-allowed; pointer-events: none;
     }
+    &:focus { border-color: $input-focus-color; }
   }
   &.form-disabled {
     .form-text,
