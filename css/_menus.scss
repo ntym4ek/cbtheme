@@ -155,8 +155,7 @@ ul.menu {                             // обнулить system.menu.css сти
   display: flex; flex-direction: column; flex-wrap: nowrap;
   overflow-y: scroll;
   .branding {
-    display:flex; flex-direction: column; //align-items: center; justify-content: center;
-    color: #fff; font-size: 1.5rem;
+    display:flex; flex-direction: column; align-items: center;
     padding: 3rem 0;
     .logo {
       height: 80px;
