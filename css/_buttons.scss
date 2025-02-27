@@ -49,10 +49,6 @@
   &.btn-outline.btn-danger    { @include btn-color-outline($brand-red); }
   &.btn-outline.btn-warning   { @include btn-color-outline($brand-orange); }
 
-  &.btn-large {
-    font-size: $input-font-size-large; font-weight: 500;
-  }
-  &.btn-small { font-size: $input-font-size-small; }
   &.btn-badge { font-size: .6rem; }
 
   // кнопка-иконка, без рамок и фона
@@ -181,10 +177,12 @@
 // Button Sizes
 // --------------------------------------------------
 
+.btn-large,
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
   @include button-size($padding-large-vertical, $padding-large-horizontal, $input-font-size-large, $line-height-large, $btn-border-radius-large, $input-height-large);
 }
+.btn-small,
 .btn-sm {
   // line-height: ensure proper height of button next to small input
   @include button-size($padding-small-vertical, $padding-small-horizontal, $input-font-size-small, $line-height-small, $btn-border-radius-small, $input-height-small);
