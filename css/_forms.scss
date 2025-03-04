@@ -39,6 +39,9 @@ label,
     }
     &:focus { border-color: $input-focus-color; }
   }
+  .ajax-wrapper {
+    max-width: 100%; width: 100%;
+  }
   &.form-disabled {
     .form-text,
     .form-textarea,
