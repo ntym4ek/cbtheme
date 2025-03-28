@@ -311,3 +311,19 @@ function cbtheme_status_messages($variables) {
   }
   return $output;
 }
+
+/**
+ * Добавляет хуки для препроцессинга enities из eck
+ */
+function cbtheme_preprocess(&$variables, $hook)
+{
+  if (isset($variables['elements']['#entity_type'])) {
+    $myhook = "preprocess_{$variables['elements']['#entity_type']}";
+    $modules = module_implements($myhook);
+
+    foreach ($modules as $module) {
+      $function = "{$module}_{$myhook}";
+      $function($variables);
+    }
+  }
+}
