@@ -103,6 +103,7 @@ $menu-item-color:         #555!default;
 $menu-item-hover-color:   #333!default;
 $menu-item-active-color:  #000!default;
 $submenu-bkg:             #fff!default;
+$submenu-min-width:       250px!default;
 $submenu-item-color:      $text-color!default;
 $submenu-item-hover-color:$text-color!default;
 $submenu-item-hover-bkg:  $text-muted!default;
@@ -117,6 +118,7 @@ $input-border-radius:       1px!default;
 
 $label-color:               $text-muted!default;
 $label-weight:              400!default;
+$label-margin:              6px!default;
 
 $input-color:               $text-color!default;
 $input-border-color:        #ccc!default;

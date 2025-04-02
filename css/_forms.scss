@@ -4,7 +4,7 @@ label,
 .label,
 .field .field-label {
   color: $label-color; font-weight: $label-weight;
-  margin-bottom: 6px;
+  margin-bottom: $label-margin;
 }
 
 
@@ -76,8 +76,8 @@ label,
 }
 
 fieldset .fieldset-legend {
-  color: $text-color; font-weight: 500;
-  margin-bottom: 6px;
+  color: $label-color; font-weight: $label-weight;
+  margin-bottom: $label-margin;
 }
 
 .field-type-text-with-summary,

@@ -51,7 +51,7 @@ ul.menu {                             // обнулить system.menu.css сти
     visibility: hidden; opacity: 0;
     position: absolute; z-index: 10;
     background-color: $submenu-bkg;
-    min-width: 225px;
+    min-width: $submenu-min-width;
     padding: $gutter/2 0;
     transition: all 200ms;
     > li {
