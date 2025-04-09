@@ -39,9 +39,6 @@ label,
     }
     &:focus { border-color: $input-focus-color; }
   }
-  .ajax-wrapper {
-    max-width: 100%; width: 100%;
-  }
   &.form-disabled {
     .form-text,
     .form-textarea,
@@ -68,7 +65,10 @@ label,
   .form-radios {
     input { margin-top: 0; }
   }
+}
 
+.form-item:not(.form-type-checkbox) {
+  > .ajax-wrapper { max-width: 100%; width: 100%; }
 }
 
 .form-type-checkbox {
