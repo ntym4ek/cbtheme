@@ -58,11 +58,15 @@
   }
   // кнопка с текстом и иконкой
   &.btn-with-icon {
-    border-radius: 20px;
-    min-height: initial;
-    padding: 0;
-    width: 22px; height: 22px;
+    i { position: absolute; left: $padding-base-horizontal; top: $padding-base-vertical; }
+    &.btn-sm i,
+    &.btn-small i { left: $padding-small-horizontal; top: $padding-small-vertical; }
+    &.btn-lg i,
+    &.btn-large i { left: $padding-large-horizontal; top: $padding-large-vertical; }
   }
+  &.btn-with-icon-right .icon { margin-left: .8em; }
+  &.btn-with-icon-left .icon { margin-right: .8em; }
+
   &.btn-wide { padding-left: 1em*3; padding-right: 1em*3; }
   &.btn-full-wide,  // уст.
   &.btn-full-width { width: 100%; }
@@ -90,9 +94,6 @@
     font-weight: 500;
     text-transform: uppercase;
   }
-
-  &.btn-with-icon-right .icon { margin-left: .8em; }
-  &.btn-with-icon-left .icon { margin-right: .8em; }
 
   &.btn-file {
     position: relative;
