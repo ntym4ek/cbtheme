@@ -24,9 +24,11 @@ function cbtheme_theme_registry_alter(&$theme_registry)
  */
 function cbtheme_preprocess_html(&$vars)
 {
-  // -- С какой стороны мобильное меню
-    // по умолчанию слева
+  // -- настройки темы
+    // сторона расположения меню (умолчанию слева)
   $vars['classes_array'][] = 'nav-mobile-' . (theme_get_setting('nav-mobile-position') ?? 'left');
+    // ширина экрана при которой мобильное меню заменяется на десктопное
+  drupal_add_js(['theme' => ['nav_mobile_hide_width' => theme_get_setting('nav-mobile-hide-width') ?? '1024']], ['type' => 'setting']);
 }
 
 /**
