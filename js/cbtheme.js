@@ -9,6 +9,12 @@
       $(".nav-mobile .expanded > a").on("click", (e) => {
         e.preventDefault();
       });
+      let isMouseAvailable = window.matchMedia("(any-pointer:coarse)").matches;
+      if (isMouseAvailable) {
+        $(".menu > .expanded > a").on("click", (e) => {
+          e.preventDefault();
+        });
+      }
 
       // --- Сообщения ---------------------------------------------------------
       function closeMessages() {
