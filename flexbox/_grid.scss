@@ -18,14 +18,16 @@
   @include row-flex-column();
 }
 
+// устарело
+// пользоваться col-xs, col-md и т.д
+// и col-xs-fill, col-md-fill и т.д
 .col {
-  //@include col();
-  max-width: 100%;    // col будет колонка свободной ширины
+  max-width: 100%;    // col - колонка свободной ширины
   padding: 0 1rem;
   flex: 0 0 auto;
-  &.fill,             // устаревший
+  &.fill,
   &.col-fill {
-    flex-grow: 1;     // col-fill будет заполнять пустое пространство
+    flex-grow: 1;     // col-fill - заполняет пустое пространство
   }
 }
 
@@ -63,7 +65,15 @@
 
 // Mixin to run inside of for loop - creates col/breakpoint classes * Not for developer use *
 @mixin col-factory($thisPrefix) {
+  // автоматическая ширина
   .col-#{$thisPrefix} {
+    flex-grow: 0;
+    flex-basis: auto;
+    max-width: 100%;
+    padding: 0 $gutter;
+  }
+  // заполняет свободное пространство
+  .col-#{$thisPrefix}-fill {
     flex-grow: 1;
     flex-basis: 0;
     max-width: 100%;
