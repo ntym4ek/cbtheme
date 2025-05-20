@@ -17,11 +17,10 @@
       }
 
       // --- Сообщения ---------------------------------------------------------
+      var messages = $("div.messages");
       function closeMessages() {
-        $("div.messages").removeClass("visible");
-        setTimeout(() => {
-          $("div.messages").remove();
-        }, 500);
+        messages.removeClass("visible");
+        messages.remove();
       }
       function setTimer(ms = 8000) {
         return setTimeout(() => {
@@ -31,19 +30,25 @@
 
       // если есть всплывающее окно с сообщениями, показать его через .5 сек и убрать через 8 сек.
       // если наведён курсор, то убрать через 2 сек после смещения курсора за пределы окна
-      $("div.messages").once( () => {
+      messages.once( () => {
         var closeTimer = null;
-        setTimeout(() => {
-          $("div.messages").addClass("visible");
-        }, 500);
-        closeTimer = setTimer();
-        $("div.messages .close").on("click", () => {
+        // если в настройках передан параметр messages.position = "inline"
+        // вывести сообщения внутри формы на странице вместо плавающего окна
+        if (Drupal.settings.messages !== undefined && Drupal.settings.messages.position === 'inline') {
+          messages.addClass("inline");
+        } else {
+          closeTimer = setTimer();
+          messages.mouseover(() => {
+            clearTimeout(closeTimer);
+          }).mouseleave(() => {
+            closeTimer = setTimer(1000);
+          });
+          setTimeout(() => {
+            messages.addClass("visible");
+          }, 500);
+        }
+        messages.find(".close").on("click", () => {
           closeMessages();
-        });
-        $("div.messages").mouseover(() => {
-          clearTimeout(closeTimer);
-        }).mouseleave(() => {
-          closeTimer = setTimer(1000);
         });
       });
 
