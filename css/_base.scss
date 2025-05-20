@@ -88,33 +88,37 @@ img { display: block; }
 }
 
 div.messages {
-  visibility: hidden;
-  position: fixed; top:0; left: 0; right: 0; z-index: 10;
-  border: none; box-shadow: 0 5px 10px 2px #33333333;
-  margin: 0; padding: 1rem 0;
-  min-height: 60px;
-  transform: translate(0, -100%);
-  transition: all 200ms;
-  &.visible {
-    transform: translate(0, 0);
-    visibility: visible;
+  padding: 1rem 0;
+  position: relative;
+  &:not(.inline) {
+    visibility: hidden;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+    border: none; box-shadow: 0 5px 10px 2px #33333333;
+    margin: 0;
+    min-height: 60px;
+    transform: translate(0, -100%);
+    transition: all 200ms;
+    &.visible {
+      transform: translate(0, 0);
+      visibility: visible;
+    }
+    .admin-menu & { margin-top: 29px!important; }
   }
   &.error,
   &.warning,
   &.status { background-image: none; }
   .close {
-    position: absolute; right: 1rem; top: 0; bottom: 0;
-    display: flex; align-items: center;
+    position: absolute; right: 1rem; top: 1rem; bottom: 0;
+    //display: flex; align-items: center;
     span {
       display: block;
       cursor: pointer;
-      color: $text-muted; font-weight: 500;
-      padding: .1rem .5rem .5rem;
+      color: $text-muted; font-weight: 500; line-height: 1;
+      padding: 0 .5rem .5rem;
       transition: all 200ms;
       &:hover { color: $text-color; }
     }
   }
-  .admin-menu & { margin-top: 29px!important; }
 }
 
 .page-header {
