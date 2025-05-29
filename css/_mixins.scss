@@ -29,36 +29,36 @@
   }
 }
 
-@mixin button-variant($color, $background, $border) {
-  color: $color;
-  background-color: $background;
+@mixin button-variant($color, $bkg, $border, $color-h: darken($color, 15%), $bkg-h: darken($bkg, 15%), $border-h:darken($border, 15%)) {
+  background-color: $bkg;
   border-color: $border;
+  color: $color;
 
   &:focus,
   &.focus {
-    color: $color;
-    background-color: darken($background, 10%);
-    border-color: darken($border, 25%);
+    color: $color-h;
+    background-color: $bkg-h;
+    border-color: $border-h;
   }
   &:hover {
-    color: $color;
-    background-color: darken($background, 10%);
-    border-color: darken($border, 12%);
+    color: $color-h;
+    background-color: $bkg-h;
+    border-color: $border-h;
   }
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-    color: $color;
-    background-color: darken($background, 10%);
+    color: $color-h;
+    background-color: $bkg-h;
     background-image: none;
-    border-color: darken($border, 12%);
+    border-color: $border-h;
 
     &:hover,
     &:focus,
     &.focus {
-      color: $color;
-      background-color: darken($background, 17%);
-      border-color: darken($border, 25%);
+      color: $color-h;
+      background-color: $bkg-h;
+      border-color: $border-h;
     }
   }
   &.disabled,
@@ -67,13 +67,13 @@
     &:hover,
     &:focus,
     &.focus {
-      background-color: $background;
+      background-color: $bkg;
       border-color: $border;
     }
   }
 
   .badge {
-    color: $background;
+    color: $bkg;
     background-color: $color;
   }
 }
@@ -88,13 +88,14 @@
 }
 
 // раскраска кнопок
-@mixin btn-color-outline($bkg, $color: #fff) {
-  background: transparent;
-  border-color: $bkg;
-  color: $bkg;
-  &:not(.btn-static):hover, &:not(.btn-static):focus {
-    background-color: lighten($bkg, 60%);
-    border-color:     $bkg;
-  }
-}
+//@mixin btn-color-outline($brd, $bkg, $text, $brd-h, $bkg-h, $text-h) {
+//  background: $bkg;
+//  border-color: $brd;
+//  color: $text;
+//  &:not(.btn-static):hover, &:not(.btn-static):focus {
+//    border-color:     $brd-h;
+//    color:            $bkg-h;
+//    background: $bkg;
+//  }
+//}
 

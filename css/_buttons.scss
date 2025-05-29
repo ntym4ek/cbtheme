@@ -44,10 +44,12 @@
 
   &.btn-static {} // для кнопок, не меняющих состояние при наведении
 
-  &.btn-outline.btn-default   { @include btn-color-outline($gray-lightest); }
-  &.btn-outline.btn-brand     { @include btn-color-outline($brand-color); }
-  &.btn-outline.btn-danger    { @include btn-color-outline($brand-red); }
-  &.btn-outline.btn-warning   { @include btn-color-outline($brand-orange); }
+  &.btn-outline.btn-default   { @include button-variant($btn-default-color, transparent, $btn-default-color, $btn-default-h-color, transparent, $btn-default-h-color); }
+  &.btn-outline.btn-white     { @include button-variant(#fff, transparent, #fff); }
+  &.btn-outline.btn-brand,
+  &.btn-outline.btn-primary   { @include button-variant($btn-primary-bg, transparent, $btn-primary-border, $btn-primary-h-bg, transparent, $btn-primary-h-border); }
+  &.btn-outline.btn-danger    { @include button-variant($btn-danger-bg, transparent, $btn-danger-border, $btn-danger-h-bg, transparent, $btn-danger-h-border); }
+  &.btn-outline.btn-warning   { @include button-variant($btn-warning-bg, transparent, $btn-warning-border, $btn-warning-h-bg, transparent, $btn-warning-h-border); }
 
   &.btn-badge { font-size: .6rem; }
 
@@ -115,27 +117,27 @@
 }
 
 .btn-default {
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border, $btn-default-h-color, $btn-default-h-bg, $btn-default-h-border);
 }
 .btn-brand,
 .btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-h-color, $btn-primary-h-bg, $btn-primary-h-border);
 }
 // Success appears as green
 .btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border, $btn-success-h-color, $btn-success-h-bg, $btn-success-h-border);
 }
 // Info appears as blue-green
 .btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border, $btn-info-h-color, $btn-info-h-bg, $btn-info-h-border);
 }
 // Warning appears as orange
 .btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border, $btn-warning-h-color, $btn-warning-h-bg, $btn-warning-h-border);
 }
 // Danger and error appear as red
 .btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border, $btn-danger-h-color, $btn-danger-h-bg, $btn-danger-h-border);
 }
 
 // Make a button look and behave like a link

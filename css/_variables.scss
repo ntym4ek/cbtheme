@@ -158,26 +158,44 @@ $btn-font-weight:                normal !default;
 $btn-default-color:              #333 !default;
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
+$btn-default-h-color:            lighten($btn-default-color, 25%) !default;
+$btn-default-h-bg:               lighten($btn-default-bg, 25%) !default;
+$btn-default-h-border:           lighten($btn-default-border, 25%) !default;
 
 $btn-primary-color:              #fff!default;
 $btn-primary-bg:                 $brand-primary!default;
 $btn-primary-border:             darken($btn-primary-bg, 5%)!default;
+$btn-primary-h-color:            $btn-primary-color !default;
+$btn-primary-h-bg:               darken($btn-primary-bg, 10%) !default;
+$btn-primary-h-border:           darken($btn-primary-border, 10%) !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
 $btn-success-border:             darken($btn-success-bg, 5%) !default;
+$btn-success-h-color:            $btn-success-color !default;
+$btn-success-h-bg:               darken($btn-success-bg, 10%) !default;
+$btn-success-h-border:           darken($btn-success-border, 10%) !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                darken($btn-info-bg, 5%) !default;
+$btn-info-h-color:               $btn-info-color !default;
+$btn-info-h-bg:                  darken($btn-info-bg, 10%) !default;
+$btn-info-h-border:              darken($btn-info-border, 10%) !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
 $btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+$btn-warning-h-color:            $btn-warning-color !default;
+$btn-warning-h-bg:               darken($btn-warning-bg, 10%) !default;
+$btn-warning-h-border:           darken($btn-warning-border, 10%) !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+$btn-danger-h-color:             $btn-danger-color !default;
+$btn-danger-h-bg:                darken($btn-danger-bg, 10%) !default;
+$btn-danger-h-border:            darken($btn-danger-border, 10%) !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
