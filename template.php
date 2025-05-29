@@ -55,12 +55,17 @@ function cbtheme_preprocess_page(&$vars)
 
 
   // вывод баннера, если в папке page-banners есть изображение с именем, аналогичным пути
+  // для главной страницы проверяется наличие баннера с именем "front"
   $banner_uri = '';
-  $paths = [str_replace('/', '--', $_GET['q'])];
-  $paths[] = drupal_get_path_alias($_GET['q']);
+  if (drupal_is_front_page()) {
+    $paths = ['front'];
+  } else {
+    $paths = [$_GET['q'], drupal_get_path_alias($_GET['q'])];
+  }
   foreach($paths as $path) {
+    $path = str_replace('/', '--', $path);
     foreach(['jpg', 'png'] as $ext) {
-      $uri = 'public://images/page-banners/' . arg(0, $path) . '.' . $ext;
+      $uri = 'public://images/page-banners/' . $path . '.' . $ext;
       if (file_exists($uri)) {
         $banner_uri = $uri;
         break;
@@ -74,6 +79,20 @@ function cbtheme_preprocess_page(&$vars)
     $vars['banner_title'] = drupal_get_title();
     $vars['banner_title_suffix'] = '';
     $vars['banner_url'] = file_create_url($banner_uri);
+    // если стиля для мобильного баннера не существует, создать его
+    if (!image_style_load('banner_mobile')) {
+      $style = image_style_save(['name' => 'banner_mobile']);
+      $effect = array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 1080,
+          'height' => 1080,
+          'upscale' => false,
+        ),
+        'isid' => $style['isid'],
+      );
+      image_effect_save($effect);
+    }
     $vars['banner_mobile_url'] = image_style_url('banner_mobile', $banner_uri);
   }
 
