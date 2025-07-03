@@ -36,7 +36,7 @@
   fieldset[disabled] & {
     cursor: not-allowed;
     opacity: $input-disabled-opacity;
-    pointer-events: none;
+    // pointer-events: none; свойство удалено, так как из-за него не отображается значение свойства cursor
     box-shadow: none;
   }
 
