@@ -54,22 +54,31 @@ function cbtheme_preprocess_page(&$vars)
   //  }
 
 
-  // вывод баннера, если в папке page-banners есть изображение с именем, аналогичным пути
-  // для главной страницы проверяется наличие баннера с именем "front"
+  // Вывод баннера, если в папке page-banners есть изображение с именем, аналогичным пути.
+  // Проверка наличия файла выполняется по всей цепочке пути, от самой длинной до короткой.
+  // Для главной страницы проверяется наличие баннера с именем "front".
   $banner_uri = '';
   if (drupal_is_front_page()) {
     $paths = ['front'];
   } else {
-    $paths = [$_GET['q'], drupal_get_path_alias($_GET['q'])];
+    $paths = [$_GET['q']];
+    if ($_GET['q'] !== drupal_get_path_alias($_GET['q'])) {
+      $paths[] = drupal_get_path_alias($_GET['q']);
+    }
   }
   foreach($paths as $path) {
-    $path = str_replace('/', '--', $path);
-    foreach(['jpg', 'png'] as $ext) {
-      $uri = 'public://images/page-banners/' . $path . '.' . $ext;
-      if (file_exists($uri)) {
-        $banner_uri = $uri;
-        break;
-      }
+    if ($chunks = explode('/', $path)) {
+      do {
+        $filename = implode('--', $chunks);
+        foreach(['jpg', 'png'] as $ext) {
+          $uri = 'public://images/page-banners/' . $filename . '.' . $ext;
+          if (file_exists($uri)) {
+            $banner_uri = $uri;
+            break;
+          }
+        }
+        array_pop($chunks);
+      } while (count($chunks));
     }
   }
   if ($banner_uri) {
