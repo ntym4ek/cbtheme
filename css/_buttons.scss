@@ -51,7 +51,10 @@
   &.btn-outline.btn-danger    { @include button-variant($btn-danger-bg, transparent, $btn-danger-border, $btn-danger-h-bg, transparent, $btn-danger-h-border); }
   &.btn-outline.btn-warning   { @include button-variant($btn-warning-bg, transparent, $btn-warning-border, $btn-warning-h-bg, transparent, $btn-warning-h-border); }
 
-  &.btn-badge { font-size: .6rem; }
+  &.btn-badge {
+    font-size: .5rem;
+    height: 25px;
+  }
 
   // кнопка-иконка, без рамок и фона
   &.btn-icon {
