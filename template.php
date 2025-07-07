@@ -333,7 +333,10 @@ function cbtheme_status_messages($variables) {
  */
 function cbtheme_preprocess(&$variables, $hook)
 {
-  if (isset($variables['elements']['#entity_type'])) {
+  // todo срабатывает на node_edit_form и бросает ошибку
+  //  отследить, где применяется и определить точные условия
+  //  (пока добавлено определение и исключение форм)
+  if (isset($variables['elements']['#entity_type']) && isset($variables["elements"]["#type"]) && $variables["elements"]["#type"] != 'form') {
     $myhook = "preprocess_{$variables['elements']['#entity_type']}";
     $modules = module_implements($myhook);
 
