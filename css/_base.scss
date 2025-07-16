@@ -490,7 +490,7 @@ fieldset {
   font-size: 2rem;
   .icon {
     color: $brand-color;
-    margin: -1px;     // чтобы не вылазили щели
+    margin: -1px;                                                                                                       // чтобы не вылазили щели
   }
 
   @media #{$tablet} {
@@ -500,7 +500,7 @@ fieldset {
 
 // --- Иконочный шрифт ---------------------------------------------------------------------
 .icon {
-  display: inline-block;
+  display: inline-flex;                                                                                                 // inline-block заменён на inline-flex, чтобы под иконкой не было отступа
   line-height: normal;
   vertical-align: middle;
 }
@@ -547,7 +547,7 @@ fieldset {
 .ajax-wrapper {
   position: relative;
   display: inline-block;
-  .message { display: none; } // ajax-wrapper используется для элементов формы, сообщение в них не отображаем
+  .message { display: none; }                                                                                           // ajax-wrapper используется для элементов формы, сообщение в них не отображаем
 }
 .ajax-progress-throbber {
   position: absolute; top: 0; bottom: 0; left: 0; right: 0;
