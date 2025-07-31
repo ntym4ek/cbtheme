@@ -221,39 +221,42 @@
       }
 
       if (settings.theme != undefined) {
-        // ширина экрана (обычно lg), начиная с которой убираем мобильное меню
-        const menuHideWidth = settings.theme.nav_mobile_hide_width;
-        if ($(window).width() < menuHideWidth) {
-          // клик по иконке Меню
-          $(".nav-mobile-label").on("click", (e) => {
-            toggleMobileNav();
-            e.stopPropagation();
-          });
+        $('body').once( () => {
 
-          $(".nav-mobile-left .page, .nav-mobile-left .nav-mobile-label").on("swiped-right", (e) => {
-            // если свайп вправо на Свайпере или блоке с классом main-menu-disabled, то не показываем меню
-            let is_prohibited = $(e.target).closest(".mobile-menu-disabled, .swiper").length > 0;
-            if (!is_prohibited) {
-              showMobileNav();
-            }
-          });
-          $(".nav-mobile-right .page, .nav-mobile-right .nav-mobile-label").on("swiped-left", (e) => {
-            // если свайп вправо на Свайпере, то не показываем меню
-            let is_prohibited = $(e.target).closest(".mobile-menu-disabled, .swiper").length > 0;
-            if (!is_prohibited) {
-              showMobileNav();
-            }
-          });
-          $(".nav-mobile-left .page, .nav-mobile-left .nav-mobile, .nav-mobile-left .nav-mobile-label").on("swiped-left", () => {
-            hideMobileNav();
-          });
-          $(".nav-mobile-right .page, .nav-mobile-right .nav-mobile, .nav-mobile-right .nav-mobile-label").on("swiped-right", () => {
-            hideMobileNav();
-          });
-          $(".page").on("click", () => {
-            hideMobileNav();
-          });
-        }
+          // ширина экрана (обычно lg), начиная с которой убираем мобильное меню
+          const menuHideWidth = settings.theme.nav_mobile_hide_width;
+          if ($(window).width() < menuHideWidth) {
+            // клик по иконке Меню
+            $(".nav-mobile-label").on("click", (e) => {
+              toggleMobileNav();
+              e.stopPropagation();
+            });
+
+            $(".nav-mobile-left .page, .nav-mobile-left .nav-mobile-label").on("swiped-right", (e) => {
+              // если свайп вправо на Свайпере или блоке с классом main-menu-disabled, то не показываем меню
+              let is_prohibited = $(e.target).closest(".mobile-menu-disabled, .swiper").length > 0;
+              if (!is_prohibited) {
+                showMobileNav();
+              }
+            });
+            $(".nav-mobile-right .page, .nav-mobile-right .nav-mobile-label").on("swiped-left", (e) => {
+              // если свайп вправо на Свайпере, то не показываем меню
+              let is_prohibited = $(e.target).closest(".mobile-menu-disabled, .swiper").length > 0;
+              if (!is_prohibited) {
+                showMobileNav();
+              }
+            });
+            $(".nav-mobile-left .page, .nav-mobile-left .nav-mobile, .nav-mobile-left .nav-mobile-label").on("swiped-left", () => {
+              hideMobileNav();
+            });
+            $(".nav-mobile-right .page, .nav-mobile-right .nav-mobile, .nav-mobile-right .nav-mobile-label").on("swiped-right", () => {
+              hideMobileNav();
+            });
+            $(".page").on("click", () => {
+              hideMobileNav();
+            });
+          }
+        });
       }
 
       // -- Аккордеон пунктов в мобильном меню ---------------------------------
