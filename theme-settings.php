@@ -24,9 +24,5 @@ function cbtheme_form_system_theme_settings_alter(&$form, &$form_state)
     '#title' => 'Breakpoint меню мобильной версии',
     '#description' => 'Ширина экрана, начиная с которой мобильное меню заменяется на десктопное',
     '#default_value' => theme_get_setting('nav-mobile-hide-width') ?? '1024',
-    '#options' => [
-      'left' => 'Слева',
-      'right' => 'Справа',
-    ],
   );
 }
