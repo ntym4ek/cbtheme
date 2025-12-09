@@ -259,17 +259,18 @@
         });
       }
 
-      // -- Аккордеон пунктов в мобильном меню ---------------------------------
-      new Accordion(document.querySelector(".nav-mobile .main-menu"), {
-        alwaysOpen: false,
-        linkSelector: ".expanded > a",
-        boxSelector: ".expanded .sub-menu",
+      // -- Dropdown пунктов в мобильном меню ---------------------------------
+      $(".menu-mobile-wr").once(function() {
+        $(".expanded").each(function() {
+          var $wrapper = $(this);
+          $wrapper.find("> .sub-menu").slideUp(200);
+          $wrapper.find("> a").click(function() {
+            $wrapper.toggleClass("show");
+            $wrapper.find("> .sub-menu").slideToggle(200);
+          });
+        });
       });
-      new Accordion(document.querySelector(".nav-mobile .secondary-menu"), {
-        alwaysOpen: false,
-        linkSelector: ".expanded > a",
-        boxSelector: ".expanded .sub-menu",
-      });
+
 
       // -- Кнопка Поделиться --------------------------------------------------
       $(".share .share-btn").click((e) => {

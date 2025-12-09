@@ -57,6 +57,11 @@ ul.menu {                             // обнулить system.menu.css сти
     > li {
       display: block;
       padding-left: 1rem; padding-right: 1rem;
+      position: relative;
+      > .sub-menu { left: 90%; top: 0; }
+      &:hover > .sub-menu {
+        visibility: visible; opacity: 1;
+      }
       a {
         color: $submenu-item-color;
         padding: 0.7rem 0.5rem;
@@ -77,9 +82,9 @@ ul.menu {                             // обнулить system.menu.css сти
 .menu-mobile-wr {
   ul.menu {
     //overflow: hidden;       в раскрытом боковом меню не видны нижние пункты
+    > li, li.leaf { padding: 0 1rem; }
     li, li.leaf {
       display: list-item;
-      padding: 0 1rem;
       > a {
         color: $menu-mobile-color; font-size: 14px; text-decoration: none; text-transform: uppercase; word-spacing: 1.5px;
         display: block;
@@ -204,9 +209,9 @@ ul.menu {                             // обнулить system.menu.css сти
       transform: rotate(-180deg);
     }
 
-    li:not(.show) .sub-menu {
-      display: none;
-    }
+    //li:not(.show) .sub-menu {
+    //  display: none;
+    //}
   }
 
   @media #{$laptop} {
