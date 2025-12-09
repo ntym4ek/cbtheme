@@ -261,7 +261,7 @@
 
       // -- Dropdown пунктов в мобильном меню ---------------------------------
       $(".menu-mobile-wr").once(function() {
-        $(".expanded").each(function() {
+        $(this).find(".expanded").each(function() {
           var $wrapper = $(this);
           $wrapper.find("> .sub-menu").slideUp(200);
           $wrapper.find("> a").click(function() {
