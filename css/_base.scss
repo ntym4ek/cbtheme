@@ -1,7 +1,5 @@
 @import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
 
-@import url($font-url);
-
 html {
   height: 100%;
   font-size: 12px;

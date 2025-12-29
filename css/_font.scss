@@ -1,0 +1,8 @@
+@import "variables"; // продублировано из styles.scss, чтобы переменные не подсвечивались
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../cbtheme/fonts/montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 800;
+  font-display: swap;
+}
