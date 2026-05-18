@@ -15,6 +15,7 @@ html * {
   outline: 0 !important;
   scrollbar-width: thin;
   scrollbar-color: $brand-color #f1f1f1;
+  scrollbar-gutter: stable;
 }
 
 a { text-decoration: none; }
